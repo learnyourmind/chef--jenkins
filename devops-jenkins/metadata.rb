@@ -1,0 +1,13 @@
+name 'devops-jenkins'
+maintainer 'The Authors'
+maintainer_email 'you@example.com'
+license 'all_rights'
+description 'Installs/Configures devops-jenkins'
+long_description 'Installs/Configures devops-jenkins'
+version '0.1.1'
+
+depends 'lvm', '~> 1.4.1'
+depends 'jenkins', '~> 2.4.1'
+depends 'chef-workstation', '~> 0.1.6'
+depends 'bcuk-lvm', '~> 1.4.0'
+depends 'build-essential', '~> 2.3.1'

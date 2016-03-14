@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Confirms the ChefDK has been installed</description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>@hourly</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command># Configure Chef &amp; Ruby environments
+eval &quot;$(chef shell-init bash)&quot;
+
+echo &quot;GEM_PATH: $GEM_PATH&quot;
+echo &quot;GEM_HOME: $GEM_HOME&quot;
+echo &quot;GEM_ROOT: $GEM_ROOT&quot;
+
+chef --version
+
+
+echo $GEM_PATH | grep &apos;/opt/chefdk/embedded/lib/ruby/gems/2.1.0&apos;
+echo $GEM_HOME | grep &apos;/var/lib/jenkins/.chefdk/gem/ruby/2.1.0&apos;
+echo $GEM_ROOT | grep &apos;/opt/chefdk/embedded/lib/ruby/gems/2.1.0&apos;
+
+chef --version | grep -i &apos;Chef Development Kit Version: 0.10.0&apos;
+chef --version | grep -i &apos;chef-client version: 12.5.1&apos;
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

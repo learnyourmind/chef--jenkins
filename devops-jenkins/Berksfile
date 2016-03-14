@@ -1,0 +1,19 @@
+source 'https://supermarket.chef.io'
+
+metadata
+
+cookbook 'chef-workstation',
+         git: 'http://172.21.68.8:8080/scm/cd/chef-workstation.git',
+         branch: 'master'
+
+cookbook 'bcuk-lvm',
+         git: 'http://172.21.68.8:8080/scm/cd/bcuk-lvm.git',
+         branch: 'master'
+
+cookbook 'devops-base', '~> 1.4.2',
+         git: 'http://172.21.68.8:8080/scm/cd/devops-base.git',
+         branch: 'master'
+
+cookbook 'devops-local-users',
+         git: 'http://172.21.68.8:8080/scm/cd/devops-local-users.git',
+         branch: 'master'

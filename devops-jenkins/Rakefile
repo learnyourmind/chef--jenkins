@@ -1,0 +1,39 @@
+# Encoding: utf-8
+require 'rspec/core/rake_task'
+
+max_concurrent = ENV['MAX_CONCURRENT'] || 3
+
+# refactor, convention, warning, error or fatal
+fail_level = ENV['FAIL_LEVEL'] || 'convention'
+current_user = ENV['USER']
+
+if current_user != 'jenkins'
+  task default: [:cop, :foodcritic, :spec, :test]
+else
+  task default: [:cop, :foodcritic, :spec, :test_jenkins]
+end
+
+desc 'Run RuboCop'
+task :cop do
+  sh("rubocop --fail-level #{fail_level}")
+end
+
+desc 'Run Foodcritic'
+task :foodcritic do
+  sh('foodcritic', '-f', 'any', '.')
+end
+
+desc 'Run chefspec tests'
+task :spec do
+  sh('rspec --format h > reports/coverage_rpt_rspec.html 2>/dev/null')
+end
+
+desc 'Run Kitchen Test'
+task :test do
+  sh("kitchen test --concurrency #{max_concurrent}")
+end
+
+desc 'Run Kitchen Test with destroy always for Jenkins runs'
+task :test_jenkins do
+  sh("kitchen test --destroy=always --concurrency #{max_concurrent}")
+end

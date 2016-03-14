@@ -1,0 +1,70 @@
+DEPENDENCIES
+  bcuk-lvm
+    git: http://172.21.68.8:8080/scm/cd/bcuk-lvm.git
+    revision: 2e96b954cbd869ee49994f5a8a8ec92932bc0b57
+    branch: master
+  chef-workstation
+    git: http://172.21.68.8:8080/scm/cd/chef-workstation.git
+    revision: 0910b4395dd6412842b86cdf4777678cafa99ee1
+    branch: master
+  devops-base
+    git: http://172.21.68.8:8080/scm/cd/devops-base.git
+    revision: fcd143e0b6c09add44b417c803f10a1e62d0fc53
+    branch: master
+  devops-jenkins
+    path: .
+    metadata: true
+  devops-local-users
+    git: http://172.21.68.8:8080/scm/cd/devops-local-users.git
+    revision: 7e9cb8cd36fccd5cf79db2a227b1d4bbc9271091
+    branch: master
+
+GRAPH
+  7-zip (1.0.2)
+    windows (>= 1.2.2)
+  apt (2.9.2)
+  bcuk-lvm (1.4.0)
+  build-essential (2.3.1)
+    7-zip (>= 0.0.0)
+  chef-workstation (0.1.9)
+    bcuk-lvm (~> 1.4.0)
+  chef_handler (1.3.0)
+  compat_resource (12.7.3)
+  devops-base (1.4.5)
+    devops-local-users (>= 0.0.0)
+    export-node (~> 1.0)
+    os-hardening (~> 1.3.1)
+    rsyslog (~> 3.0.0)
+    selinux (~> 0.9)
+    ssh-hardening (~> 1.1.0)
+    yum (~> 3.7)
+  devops-jenkins (0.1.1)
+    bcuk-lvm (~> 1.4.0)
+    build-essential (~> 2.3.1)
+    chef-workstation (~> 0.1.6)
+    jenkins (~> 2.4.1)
+    lvm (~> 1.4.1)
+  devops-local-users (1.0.1)
+  export-node (1.0.1)
+  jenkins (2.4.1)
+    apt (~> 2.0)
+    runit (~> 1.5)
+    yum (~> 3.0)
+  lvm (1.4.1)
+  ohai (2.1.0)
+  os-hardening (1.3.1)
+    apt (>= 0.0.0)
+    sysctl (>= 0.3.0)
+    yum (>= 0.0.0)
+  packagecloud (0.2.0)
+  rsyslog (3.0.0)
+    compat_resource (>= 0.0.0)
+  runit (1.7.6)
+    packagecloud (>= 0.0.0)
+  selinux (0.9.0)
+  ssh-hardening (1.1.0)
+  sysctl (0.7.0)
+    ohai (>= 0.0.0)
+  windows (1.39.2)
+    chef_handler (>= 0.0.0)
+  yum (3.10.0)
